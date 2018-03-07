@@ -4,11 +4,11 @@ package Queues;
 import java.util.*;
 
 public abstract class MyQueue<E> implements Queue<E> {
-    protected int size = 0;
+    int size = 0;
 
-    protected Node<E> first;
+    Node<E> first;
 
-    protected Node<E> last;
+    Node<E> last;
 
 
     @SuppressWarnings("unchecked")
@@ -130,8 +130,8 @@ public abstract class MyQueue<E> implements Queue<E> {
             a = Arrays.copyOf(a, size);
         }
 
-            E[] queueArray = (E[]) this.toArray();
-            System.arraycopy(queueArray, 0, a, 0, size);
+        E[] queueArray = (E[]) this.toArray();
+        System.arraycopy(queueArray, 0, a, 0, size);
 
 
         return a;
@@ -154,7 +154,7 @@ public abstract class MyQueue<E> implements Queue<E> {
             throw new NullPointerException();
         } else {
             E element = (E) o;
-            if(contains(o)){
+            if (contains(o)) {
                 unlink(findNode(element));
                 return true;
             }
@@ -168,12 +168,12 @@ public abstract class MyQueue<E> implements Queue<E> {
 
         Object[] array;
         array = c.toArray();
-        if(c == null){
+        if (c == null) {
             throw new NullPointerException();
         } else {
-           for(Object o : array) {
-               if(contains(o))
-                   counter++;
+            for (Object o : array) {
+                if (contains(o))
+                    counter++;
             }
         }
         return (counter == c.size());
@@ -181,10 +181,10 @@ public abstract class MyQueue<E> implements Queue<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        if(c == null || c.contains(null)){
+        if (c == null || c.contains(null)) {
             throw new NullPointerException();
-        }else{
-            for(E element : c){
+        } else {
+            for (E element : c) {
                 add(element);
             }
         }
@@ -197,11 +197,11 @@ public abstract class MyQueue<E> implements Queue<E> {
 
         Object[] array;
         array = c.toArray();
-        if(c == null){
+        if (c == null) {
             throw new NullPointerException();
         } else {
-            for(Object o : array) {
-                    remove(o);
+            for (Object o : array) {
+                remove(o);
             }
         }
         return (counter != size);
@@ -211,10 +211,10 @@ public abstract class MyQueue<E> implements Queue<E> {
     public boolean retainAll(Collection<?> c) {
         int counter = size;
 
-        if(c == null || c.contains(null)){
+        if (c == null || c.contains(null)) {
             throw new NullPointerException();
         } else {
-            for(Node<E> i = first; i!= null; i = i.next){
+            for (Node<E> i = first; i != null; i = i.next) {
                 if (!c.contains(i.current))
                     unlink(i);
             }
@@ -238,16 +238,16 @@ public abstract class MyQueue<E> implements Queue<E> {
         return add(e);
     }
 
-    private static class MyQueueIterator<E> implements Iterator<E>{
+    private static class MyQueueIterator<E> implements Iterator<E> {
 
         private int size;
         private Node<E> element;
 
         private int position = 1;
 
-        private MyQueueIterator(MyQueue<E> queue){
+        private MyQueueIterator(MyQueue<E> queue) {
             size = queue.size();
-            element= queue.first;
+            element = queue.first;
 
         }
 
@@ -259,22 +259,22 @@ public abstract class MyQueue<E> implements Queue<E> {
         @Override
         public E next() throws NoSuchElementException {
             E current;
-            if(hasNext()) {
+            if (hasNext()) {
                 current = element.current;
                 element = element.next;
                 position++;
                 return current;
-            }else
+            } else
                 throw new NoSuchElementException();
         }
 
         @Override
-        public void remove() throws UnsupportedOperationException{
+        public void remove() throws UnsupportedOperationException {
             throw new UnsupportedOperationException();
         }
     }
 
-    protected static class Node<E> {
+    static class Node<E> {
         E current;
         Node<E> next;
         Node<E> prev;
