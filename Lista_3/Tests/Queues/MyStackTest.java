@@ -8,8 +8,8 @@ import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MyStackTest {
-    MyStack<String> myStack;
-    String a, b, c, d, e;
+    private MyStack<String> myStack;
+    private String a, b, c, d, e;
 
     @BeforeEach
     void setUp() {

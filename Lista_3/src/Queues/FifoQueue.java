@@ -29,7 +29,6 @@ public class FifoQueue<E> extends MyQueue {
     @Override
     @SuppressWarnings("unchecked")
     public E remove() {
-
         if (isEmpty())
             throw new NoSuchElementException();
         else
@@ -52,7 +51,7 @@ public class FifoQueue<E> extends MyQueue {
         if (isEmpty())
             throw new NoSuchElementException();
         else
-            return (E)first.current;
+            return (E) first.current;
     }
 
     @Override
@@ -61,6 +60,6 @@ public class FifoQueue<E> extends MyQueue {
         if (isEmpty())
             return null;
         else
-            return (E)first.current;
+            return (E) first.current;
     }
 }

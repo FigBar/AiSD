@@ -9,9 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MyQueueTest {
 
-    MyQueue<String> queue1;
-    String a, b, c, d, e;
-    ArrayList<String> addList;
+    private MyQueue<String> queue1;
+    private String a, b, c, d, e;
+    private ArrayList<String> addList;
 
     @BeforeEach
     void setUp() {

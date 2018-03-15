@@ -8,8 +8,8 @@ import java.util.NoSuchElementException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FifoQueueTest {
-    FifoQueue<String> queue1;
-    String a, b, c, d, e;
+    private FifoQueue<String> queue1;
+    private String a, b, c;
 
     @BeforeEach
     void setUp() {
@@ -17,8 +17,7 @@ class FifoQueueTest {
         a = "A";
         b = "B";
         c = "C";
-        d = "D";
-        e = "E";
+
     }
 
     @Test
