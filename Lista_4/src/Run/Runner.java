@@ -21,7 +21,7 @@ public class Runner {
         System.out.println("This program will generate an array of 1000000 integers from -1000000 to 1000000" + "\n"
                 + "Write a integer and if it is included in the generated array, you will find out on which position it is." + "\n"
                 + "if the generated array doesn't contain a specific integer you will get a -1" + "\n");
-        System.out.println("Give your key number please: ");
+        System.out.println("Give your key number between - 1000000 and 1000000 please: ");
 
         int key = sc.nextInt();
 

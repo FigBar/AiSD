@@ -3,6 +3,7 @@ package Binary_Search;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+
 import Sort.SortingAlgorithm;
 
 public class BinarySearch {
@@ -21,7 +22,7 @@ public class BinarySearch {
         sortList.addAll(c);
     }
 
-    public void add(int number){
+    public void add(int number) {
         sortList.add(number);
     }
 
@@ -29,7 +30,7 @@ public class BinarySearch {
         if (searchArray == null)
             throw new NullPointerException();
 
-        if(!sortList.isEmpty())
+        if (!sortList.isEmpty())
             addToArray();
 
         return binarySearch(key);
@@ -39,6 +40,7 @@ public class BinarySearch {
         int start = 0;
         int end = searchArray.length - 1;
 
+
         while (start <= end) {
             int mid = (start + end) / 2;
 
@@ -47,6 +49,9 @@ public class BinarySearch {
             } else if (searchArray[mid] > key) {
                 end = mid - 1;
             } else if (searchArray[mid] == key) {
+                while (mid > 0 && searchArray[mid - 1] == key) {
+                    mid--;
+                }
                 return mid;
             }
         }

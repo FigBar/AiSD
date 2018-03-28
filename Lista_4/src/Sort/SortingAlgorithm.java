@@ -4,7 +4,7 @@ public class SortingAlgorithm {
 
     public int[] doSelectionSort(int[] array) {
 
-        if(array == null)
+        if (array == null)
             throw new NullPointerException();
 
         int temp;
@@ -21,7 +21,7 @@ public class SortingAlgorithm {
     }
 
     public int[] doBucketSort(int[] arrayToSort) {
-        if(arrayToSort == null)
+        if (arrayToSort == null)
             throw new NullPointerException();
 
         int maxNumber = maxNumber(arrayToSort);

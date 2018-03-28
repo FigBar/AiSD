@@ -16,7 +16,7 @@ class BinarySearchTest {
 
     @BeforeEach
     void setUp() {
-        int[] array = {7, 70, 1, 44, 12, 23, 9, 56, 4};
+        int[] array = {7, 70, 1, 44, 12, 12, 23, 9, 56, 4};
 
         list1 = new ArrayList<>();
         list1.add(3);
@@ -29,17 +29,18 @@ class BinarySearchTest {
     @Test
     void doBinarySearch() {
 
-        assertEquals(6, search1.doBinarySearch(44));
+        assertEquals(7, search1.doBinarySearch(44));
         assertEquals(2, search1.doBinarySearch(7));
 
         assertEquals(0, search1.doBinarySearch(1));
-        assertEquals(8, search1.doBinarySearch(70));
+        assertEquals(9, search1.doBinarySearch(70));
+        assertEquals(4, search1.doBinarySearch(12));
 
         assertEquals(-1, search1.doBinarySearch(71));
 
         search1.setSearchArray(null);
 
-        assertThrows(NullPointerException.class, ()-> search1.doBinarySearch(1));
+        assertThrows(NullPointerException.class, () -> search1.doBinarySearch(1));
     }
 
     @Test
@@ -47,9 +48,11 @@ class BinarySearchTest {
         search1.addAll(list1);
         search1.doBinarySearch(2);
 
-        int[] expectedArray = {1,3,4,7,7,9,10,12,23,44,56,70};
+        int[] expectedArray = {1, 3, 4, 7, 7, 9, 10, 12, 12, 23, 44, 56, 70};
 
         assertArrayEquals(expectedArray, search1.getSearchArray());
+
+        assertEquals(6, search1.doBinarySearch(10));
     }
 
     @Test
@@ -60,8 +63,10 @@ class BinarySearchTest {
 
         search1.doBinarySearch(4);
 
-        int[] expectedArray = {-4,-4,1,4,7,9,12,23,44,45,56,70};
+        int[] expectedArray = {-4, -4, 1, 4, 7, 9, 12, 12, 23, 44, 45, 56, 70};
         assertArrayEquals(expectedArray, search1.getSearchArray());
+
+        assertEquals(0, search1.doBinarySearch(-4));
 
     }
 }

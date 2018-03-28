@@ -23,7 +23,7 @@ class SortingAlgorithmTest {
         assertArrayEquals(sortedArray, arrayToSort);
 
         assertThrows(NullPointerException.class, ()-> sort1.doSelectionSort(null));
-        assertThrows(NullPointerException.class, ()-> sort1.doBucketSort(null));
+
     }
 
     @Test
