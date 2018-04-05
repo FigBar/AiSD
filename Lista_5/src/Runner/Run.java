@@ -4,8 +4,8 @@ import Sort.SortingAlgorithm;
 
 public class Run {
     public static void main(String[] args) {
-        int[] array1 = new int[37];
-        int[] array2 = new int[40];
+        int[] array1 = new int[1000000];
+        int[] array2 = new int[203];
 
         for (int i = 0; i < array1.length ; i++) {
             array1[i] = (int)(-100 + Math.random()*201);

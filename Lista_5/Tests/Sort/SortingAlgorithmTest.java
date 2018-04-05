@@ -27,4 +27,14 @@ class SortingAlgorithmTest {
         int[] sortedArray2 = {-100, -21, -10, 2, 4, 5, 6, 6, 7};
         assertArrayEquals(sortedArray2, SortingAlgorithm.mergeSort(arrayToSort2));
     }
+
+    @Test
+    void quickSortTest(){
+        int[] sortedArray = {-30, -25, 1, 1, 4, 17, 24, 32, 55, 76, 76, 96};
+        assertArrayEquals(sortedArray, SortingAlgorithm.quickSort(arrayToSort));
+
+        int[] sortedArray2 = {-100, -21, -10, 2, 4, 5, 6, 6, 7};
+        assertArrayEquals(sortedArray2, SortingAlgorithm.quickSort(arrayToSort2));
+
+    }
 }
