@@ -52,6 +52,11 @@ public abstract class HashTable<K, V> implements Map<K, V> {
     @Override
     @SuppressWarnings("unchecked")
     public V get(Object key) {
+
+        if (key == null) {
+            throw new NullPointerException();
+        }
+
         Entry<K, V> toGet = findEntryByKey((K) key);
 
         if (toGet != null) {
@@ -62,6 +67,7 @@ public abstract class HashTable<K, V> implements Map<K, V> {
 
     @Override
     public void putAll(Map<? extends K, ? extends V> m) {
+
         for (Map.Entry<? extends K, ? extends V> toPut : m.entrySet()) {
             put(toPut.getKey(), toPut.getValue());
         }
@@ -109,7 +115,7 @@ public abstract class HashTable<K, V> implements Map<K, V> {
     @Override
     @SuppressWarnings("unchecked")
     public boolean remove(Object key, Object value) {
-        if (value == null) {
+        if (value == null || key == null) {
             throw new NullPointerException();
         }
 
@@ -125,7 +131,7 @@ public abstract class HashTable<K, V> implements Map<K, V> {
 
     @Override
     public boolean replace(K key, V oldValue, V newValue) {
-        if (oldValue == null || newValue == null) {
+        if (key == null || oldValue == null || newValue == null) {
             throw new NullPointerException();
         }
 
@@ -142,7 +148,7 @@ public abstract class HashTable<K, V> implements Map<K, V> {
 
     @Override
     public V replace(K key, V value) {
-        if (value == null) {
+        if (key == null || value == null) {
             throw new NullPointerException();
         }
 

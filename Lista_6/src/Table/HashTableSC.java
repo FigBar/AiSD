@@ -79,7 +79,7 @@ public class HashTableSC<K, V> extends HashTable<K, V> {
     @Override
     @SuppressWarnings("unchecked")
     public V put(K key, V value) {
-        if (value == null) {
+        if (key == null || value == null) {
             throw new NullPointerException();
         }
 
@@ -176,12 +176,12 @@ public class HashTableSC<K, V> extends HashTable<K, V> {
         if (isEmpty()) {
             return null;
         }
-        Set<Map.Entry<K,V>> set = new HashSet<>();
+        Set<Map.Entry<K, V>> set = new HashSet<>();
 
         for (Entry<K, V> entry : (Entry<K, V>[]) table) {
             EntrySC<K, V> scEntry = (EntrySC<K, V>) entry;
             for (; scEntry != null; scEntry = scEntry.next) {
-                    set.add(scEntry);
+                set.add(scEntry);
             }
         }
         return set;

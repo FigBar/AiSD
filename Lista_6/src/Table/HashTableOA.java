@@ -76,7 +76,7 @@ public class HashTableOA<K, V> extends HashTable<K, V> {
     @Override
     @SuppressWarnings("unchecked")
     public V put(K key, V value) {
-        if (value == null) {
+        if (key == null || value == null) {
             throw new NullPointerException();
         }
 
@@ -107,6 +107,9 @@ public class HashTableOA<K, V> extends HashTable<K, V> {
     @Override
     @SuppressWarnings("unchecked")
     public V remove(Object key) {
+        if(key == null){
+            throw new NullPointerException();
+        }
         int hash = key.hashCode();
 
         for (int i = 1; i <= table.length; i++) {
@@ -126,6 +129,7 @@ public class HashTableOA<K, V> extends HashTable<K, V> {
     @Override
     @SuppressWarnings("unchecked")
     public Collection<V> values() {
+
         if (isEmpty())
             return null;
 
