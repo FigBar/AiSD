@@ -14,7 +14,7 @@ public class RedBlackTree extends Tree {
 
     @Override
     public void insert(int value) {
-        insert(value,root,null);
+        insert(value, root, null);
         Node newVal = search(value);
         regulateTree(newVal);
 
@@ -79,7 +79,8 @@ public class RedBlackTree extends Tree {
                 uncle = grandparent.left;
 
             if (uncle == null) {
-                uncle = new NodeRB(null, null, grandparent, 0, BLACK);
+                uncle = new NodeRB(null, null, grandparent, 0);
+                uncle.color = BLACK;
             }
 
             if (rootParent.color == RED) {
@@ -90,23 +91,41 @@ public class RedBlackTree extends Tree {
                     regulateTree(grandparent);
                 } else {
                     if (rootParent == grandparent.left) {
+                        boolean flag = false;
                         if (root == rootParent.right) {
                             leftRotation(rootParent);
+                            flag = true;
                         }
                         rightRotation(grandparent);
 
-                        Color tempColor = grandparent.color;
-                        grandparent.color = rootParent.color;
-                        rootParent.color = tempColor;
+                        if (flag) {
+                            Color tempColor = grandparent.color;
+                            grandparent.color = root.color;
+                            root.color = tempColor;
+                        } else {
+                            Color tempColor = grandparent.color;
+                            grandparent.color = rootParent.color;
+                            rootParent.color = tempColor;
+                        }
+
                     } else {
+                        boolean flag = false;
                         if (root == rootParent.left) {
                             rightRotation(rootParent);
+                            flag = true;
                         }
                         leftRotation(grandparent);
 
-                        Color tempColor = grandparent.color;
-                        grandparent.color = rootParent.color;
-                        rootParent.color = tempColor;
+                        if (flag) {
+                            Color tempColor = grandparent.color;
+                            grandparent.color = root.color;
+                            root.color = tempColor;
+
+                        } else {
+                            Color tempColor = grandparent.color;
+                            grandparent.color = rootParent.color;
+                            rootParent.color = tempColor;
+                        }
                     }
                 }
             }
