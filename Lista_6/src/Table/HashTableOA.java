@@ -18,7 +18,7 @@ public class HashTableOA<K, V> extends HashTable<K, V> {
 
     @Override
     @SuppressWarnings("unchecked")
-    Entry<K, V> findEntryByKey(K key) {
+    protected Entry<K, V> findEntryByKey(K key) {
         int hash = key.hashCode();
 
         for (int i = 1; i <= table.length; i++) {
@@ -107,7 +107,7 @@ public class HashTableOA<K, V> extends HashTable<K, V> {
     @Override
     @SuppressWarnings("unchecked")
     public V remove(Object key) {
-        if(key == null){
+        if (key == null) {
             throw new NullPointerException();
         }
         int hash = key.hashCode();

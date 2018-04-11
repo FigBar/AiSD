@@ -18,7 +18,7 @@ public class HashTableSC<K, V> extends HashTable<K, V> {
 
     @Override
     @SuppressWarnings("unchecked")
-    Entry<K, V> findEntryByKey(K key) {
+    protected Entry<K, V> findEntryByKey(K key) {
 
         int hash = key.hashCode();
         int hashIndex = Math.abs(hash) % table.length;

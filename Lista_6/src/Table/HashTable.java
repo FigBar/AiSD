@@ -6,14 +6,14 @@ import java.util.*;
 
 public abstract class HashTable<K, V> implements Map<K, V> {
 
-    int count = 0;
+    protected int count = 0;
 
-    Entry<?, ?>[] table;
+    protected Entry<?, ?>[] table;
 
-    float threshold;
-    float loadFactor;
+    protected float threshold;
+    protected float loadFactor;
 
-    final int MAX_ARRAY_SIZE = 1000000;
+    protected final int MAX_ARRAY_SIZE = 1000000;
 
     public HashTable(int initialCapacity, float loadFactor) {
 
@@ -30,7 +30,7 @@ public abstract class HashTable<K, V> implements Map<K, V> {
 
     }
 
-    abstract Entry<K, V> findEntryByKey(K key);
+    protected abstract Entry<K, V> findEntryByKey(K key);
 
 
     @Override

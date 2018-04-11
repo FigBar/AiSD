@@ -22,25 +22,25 @@ class HashTableTest {
 
         assertThrows(NullPointerException.class, () -> tableOA.containsKey(null));
 
-        assertEquals(false, tableOA.containsKey(5));
-        assertEquals(false, tableOA.containsKey(10));
+        assertFalse(tableOA.containsKey(5));
+        assertFalse(tableOA.containsKey(10));
 
         tableOA.put(5, "Patryk");
         tableOA.put(10, "Mirek");
 
-        assertEquals(true, tableOA.containsKey(5));
-        assertEquals(true, tableOA.containsKey(10));
+        assertTrue(tableOA.containsKey(5));
+        assertTrue(tableOA.containsKey(10));
 
         assertThrows(NullPointerException.class, () -> tableSC.containsKey(null));
 
-        assertEquals(false, tableSC.containsKey(5));
-        assertEquals(false, tableSC.containsKey(10));
+        assertFalse(tableSC.containsKey(5));
+        assertFalse(tableSC.containsKey(10));
 
         tableOA.put(1, "Patryk");
         tableOA.put(20, "Mirek");
 
-        assertEquals(true, tableOA.containsKey(1));
-        assertEquals(true, tableOA.containsKey(20));
+        assertTrue(tableOA.containsKey(1));
+        assertTrue(tableOA.containsKey(20));
     }
 
     @Test
@@ -172,6 +172,49 @@ class HashTableTest {
         tableSC.put(13, "Jan");
         assertEquals("Jan", tableSC.replace(13,"abc"));
         assertEquals("abc", tableSC.get(13));
+
+    }
+
+    @Test
+    void labTest(){
+        HashTableOA <String,Integer> table1 = new HashTableOA<>();
+        HashTableSC <String, Integer> table2 = new HashTableSC<>();
+
+        table1.put("Aa", 1);
+        table1.put("Bb", 2);
+
+        assertTrue(table1.containsKey("Aa"));
+        assertTrue(table1.containsKey("Bb"));
+
+        assertEquals((Integer) 1, table1.get("Aa"));
+        assertEquals((Integer) 2, table1.get("Bb"));
+
+        assertEquals((Integer) 2, table1.remove("Bb"));
+
+        assertTrue(table1.containsKey("Aa"));
+        assertFalse(table1.containsKey("Bb"));
+
+        assertEquals((Integer) 1, table1.get("Aa"));
+        assertEquals(null, table1.get("Bb"));
+
+
+        table2.put("Aa", 1);
+        table2.put("Bb", 2);
+
+        assertTrue(table2.containsKey("Aa"));
+        assertTrue(table2.containsKey("Bb"));
+
+        assertEquals((Integer) 1, table2.get("Aa"));
+        assertEquals((Integer) 2, table2.get("Bb"));
+
+        assertEquals((Integer) 2, table2.remove("Bb"));
+
+        assertTrue(table2.containsKey("Aa"));
+        assertFalse(table2.containsKey("Bb"));
+
+        assertEquals((Integer) 1, table2.get("Aa"));
+        assertEquals(null, table2.get("Bb"));
+
 
     }
 }

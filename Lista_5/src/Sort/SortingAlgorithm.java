@@ -82,12 +82,17 @@ public class SortingAlgorithm {
     }
 
     private static int partition(int[] array, int position, int low, int high) {
+
         int l = low;
         int h = high - 2;
 
+        //taking the middle as a pivot
         int pivot = array[position];
+
+        //temporarily placing pivot at the end of sorted subarray
         swap(array, position, high - 1);
 
+        //moving elements on the proper side of pivot
         while (l < h) {
             if (array[l] < pivot) {
                 l++;
@@ -99,35 +104,39 @@ public class SortingAlgorithm {
         }
 
         int index = h;
-        if(array[h] < pivot){
+        if (array[h] < pivot) {
             index++;
         }
-        swap(array, high -1, index);
+
+        //placing pivot on its right position
+        swap(array, high - 1, index);
+
         return index;
     }
 
-    public static int[] quickSort(int[] array) {
+    public static int[] quickSort(int[] arrayToSort) {
         Stack<Integer> stack = new Stack<>();
         stack.push(0);
-        stack.push(array.length);
+        stack.push(arrayToSort.length);
 
-        while(!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             int end = stack.pop();
             int start = stack.pop();
 
-            if(end - start < 2){
+            if (end - start < 2) {
                 continue;
             }
-            int p = start + ((end - start)/2);
 
-            p = partition(array,p,start,end);
+            int p = start + ((end - start) / 2);
 
-            stack.push(p+1);
+             p = partition(arrayToSort, p, start, end);
+
+            stack.push(p + 1);
             stack.push(end);
 
             stack.push(start);
             stack.push(p);
         }
-        return array;
+        return arrayToSort;
     }
 }
