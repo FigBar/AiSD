@@ -1,5 +1,5 @@
 package Trees.Tools;
 
 public enum Color {
-    RED,BLACK
+    RED,BLACK, DOUBLE_BLACK
 }

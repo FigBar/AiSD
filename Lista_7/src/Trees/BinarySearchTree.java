@@ -54,14 +54,33 @@ public class BinarySearchTree extends Tree {
             root.right = delete(value, root.right);
         } else {
 
+            if(root == this.root){
+                if(root.left == null && root.right == null){
+                    this.root = null;
+                    return null;
+                } else if (root.right == null && root.left != null){
+                    root.value = maxValue(root.left);
+                    root.left = delete(root.value,root.left);
+                } else if (root.left == null && root.right != null){
+                    root.value = minValue(root.right);
+                    root.right = delete(root.value, root.right);
+                }
+            }
+
             if (root.left == null) {
+                if(root.right != null){
+                    root.right.level = root.level;
+                }
                 return root.right;
             } else if (root.right == null) {
+                if(root.left != null){
+                    root.left.level = root.level;
+                }
                 return root.left;
             }
 
-            root.value = minValue(root.right);
-            root.right = delete(root.value, root.right);
+            root.value = maxValue(root.left);
+            root.left = delete(root.value, root.left);
         }
         return root;
     }
